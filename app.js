@@ -1,16 +1,18 @@
 const user_btn = document.querySelector("button");
 const error_div = document.querySelector(".error");
 
-// user_btn.addEventListener("click", () => {
-//   fetch("https://jsonplaceholder.typicode.com/posts")
-//     .then((result) => result.json())
-//     .then((data) => {
-//       //   data.forEach((user) => console.log(user.name, user.email));
-//       const filtered = data.filter((post) => post.userId === 10);
-//       console.log(filtered);
-//     })
-//     .catch((err) => console.log(err.message));
-// });
+
+const get_posts = (id) => {
+  fetch("https://jsonplaceholder.typicode.com/posts")
+  .then((result) => result.json())
+  .then((data) => {
+    const filtered = data.filter((post) => post.userId === id);
+    localStorage.setItem("user_posts", JSON.stringify(filtered))
+    window.location = "./posts.html"
+  })
+  .catch((err) => error_div.append(err.message));
+};
+
 
 window.addEventListener("load", () => {
   const card = document.querySelector(".container");
@@ -27,7 +29,7 @@ window.addEventListener("load", () => {
         <div class="user_info">
           <p>${user.name}</p>
           <p>${user.email}</p>
-          <button>Get User’s Posts</button>
+          <button onclick="get_posts(${user.id})">Get User’s Posts</button>
         </div>
         </div>
         `;
