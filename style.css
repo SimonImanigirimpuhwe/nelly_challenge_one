@@ -118,6 +118,8 @@ footer {
   color: #ffff;
   padding: 10px;
   width: 100%;
+  display: flex;
+  flex-direction:row
 }
 .address {
   display: flex;
@@ -125,6 +127,11 @@ footer {
   margin-left: 50px;
   padding-bottom: 20px;
   width: 100px;
+}
+.copyright{
+  margin-left: auto;
+  color: #ffff;
+  padding-top: 10px;
 }
 .links {
   display: flex;
@@ -136,4 +143,11 @@ a {
 }
 .fa-linkedin-square, .fa-envelope-o,.fa-github {
   font-size: 20px;
+}
+.loading{
+  height: 100vh;
+  font-size: 30px;
+  font-weight: "semi-bold";
+  align-self: center;
+  padding-top: 20vh;
 }

@@ -1,5 +1,6 @@
 const user_btn = document.querySelector("button");
 const error_div = document.querySelector(".error");
+const loading_div = document.querySelector(".loading");
 
 
 const get_posts = (id) => {
@@ -16,6 +17,7 @@ const get_posts = (id) => {
 
 window.addEventListener("load", () => {
   const card = document.querySelector(".container");
+  loading_div.innerHTML= "Loading....."
   fetch("https://jsonplaceholder.typicode.com/users")
     .then((result) => result.json())
     .then((data) => {
@@ -36,6 +38,7 @@ window.addEventListener("load", () => {
         })
         .join("");
       card.innerHTML = mapped_user;
+      loading_div.style.display = "none"
     })
     .catch((err) => error_div.append(err.message));
 });
